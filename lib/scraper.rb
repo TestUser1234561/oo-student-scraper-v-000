@@ -22,11 +22,10 @@ class Scraper
     social = {
       profile_quote: doc.css('.profile-quote').text.strip.gsub(/\s+/, " "),
       bio: doc.css('.bio-content .description-holder p').text.strip.gsub(/\s+/, " "),
-      blog: 'http://flatironschool.com'
     }
 
     if (match = %r{([^"]*)twitter.com/([^"]*)}.match(doc.css('a').to_s))
-    social[:twitter] = match[0]
+      social[:twitter] = match[0]
     end
 
     if (match = %r{([^"]*)linkedin.com/([^"]*)}.match(doc.css('a').to_s))
@@ -38,6 +37,10 @@ class Scraper
     end
 
     if (match = %r{([^"]*)github.com/([^"]*)}.match(doc.css('a').to_s))
+      social[:github] = match[0]
+    end
+
+    if (match = %r{([^"]*)([^"]*)[^youtube][^linkedin].com/([^"]*)}.match(doc.css('a').to_s))
       social[:github] = match[0]
     end
 
