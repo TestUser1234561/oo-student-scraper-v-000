@@ -40,7 +40,7 @@ class Scraper
       social[:github] = match[0]
     end
 
-    if (match = %r{([^"]*)([^"]*)[^youtube][^linkedin].com/([^"]*)}.match(doc.css('a').to_s))
+    if (match = %r{([^"]*)([^"]*)[^youtube][^linkedin].com/([^"]*)}.match(doc.css('.social-links a').to_s))
       social[:blog] = match[0]
     end
 
