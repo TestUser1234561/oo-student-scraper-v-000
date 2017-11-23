@@ -18,7 +18,7 @@ class Scraper
   end
 
   def self.scrape_profile_page(profile_url)
-    doc = Nokogiri::HTML(open(".#{profile_url}"))
+    doc = Nokogiri::HTML(open("#{profile_url}"))
     social = {
       profile_quote: doc.css('.profile-quote').text.strip.gsub(/\s+/, " "),
       bio: doc.css('.bio-content .description-holder p').text.strip.gsub(/\s+/, " "),
